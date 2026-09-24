@@ -20,7 +20,7 @@ jobs:
           echo "THIS IS THE DATA THAT WILL BE PLACED IN THE ARTIFACT" >> MY_FILE.txt
           ls -ltr
       - name: artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: File_1
           path: ./MY_FILE.txt
@@ -46,7 +46,7 @@ jobs:
           free -h >> Data/log.ppt
 
       - name: artifact
-        uses: actions/checkout@v5.1.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: Multiple_files
           path: |
@@ -60,14 +60,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: upload single artifact
-          uses: actions/download-artifact@v3.1.0
+          uses: actions/download-artifact@v7.0.0
           with:
             name: File_1
         - name: Checking if single file is downloaded 
           run: ls -al
 
         - name: uploading multiple files 
-          uses: actions/download-artifact@v3.1.0
+          uses: actions/download-artifact@v7.0.0
           with:
             name: Multiple_files
         - name: Checking if multiple files are downloaded 
