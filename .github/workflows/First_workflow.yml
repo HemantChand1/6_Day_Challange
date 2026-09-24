@@ -10,7 +10,7 @@ jobs:
     name: Data
     runs-on: ubuntu-latest
     steps:
-      - name: Chaecking the current directory
+      - name: Checking the current directory
         run: |
           pwd
           ls -al
@@ -26,6 +26,33 @@ jobs:
         with:
           name: File_1
           path: ./MY_FILE.txt
+
+  job2:
+    needs: job1
+    name: Uploading Multiple files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking current files
+        run: |
+          ls -la
+          pwd
+
+      - name: adding files to the location
+        run: |
+          echo " THis is the current 1 file " > data.txt
+          ls - al > Data/temp.txt
+          hostnamectl > Data/details.txt
+          systemctl > Data/System.txt
+
+      - name: artifact
+        uses: actions/checkout@v5.1.0
+        with:
+          name: Multiple_files
+          path: |
+            ./data.txt
+            Data/
+            !**/Data/System.txt
+        
           
           
   
