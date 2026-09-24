@@ -1,0 +1,14 @@
+name: First_workflow
+on: push
+
+jobs:
+  job1:
+    name: Data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chaecking the current directory
+        run: |
+          pwd
+          ls -al
+      
+    
