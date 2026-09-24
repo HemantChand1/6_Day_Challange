@@ -19,6 +19,13 @@ jobs:
         uses: actions/checkout@v5.1.0
       - name: step-3
         run: |
+          echo "THIS IS THE DATA THAT WILL BE PLACED IN THE ARTIFACT" >> MY_FILE.txt
           ls -ltr
+      - name: artifact
+        uses: @actions/upload-artifact
+        with:
+          name: File_!
+          path: ./MY_FILE.txt
+          
           
   
