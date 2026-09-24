@@ -10,5 +10,18 @@ jobs:
         run: |
           pwd
           ls -al
-      
-    
+  job2:
+    needs: job1
+    name: adding additonal data
+    runs-on: ubuntu-latest
+    steps:
+      - name: adding file
+        run: mkdir Test
+      - name: adding data to directory
+        run: | 
+          cd ./Test
+          echo "This is the test file to be tested in the repo" > mono.txt
+      - name: checkout
+        uses: actions/checkout@v2.8.0
+      - name: check data again
+        run: ls -al
