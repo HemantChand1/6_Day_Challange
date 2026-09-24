@@ -4,8 +4,10 @@ on:
     branches:
       - Dev
       - 'feature-*' # this is a string any branch that starts with feature- will get triggured by this "
-  
-  
+  pull_request:
+    branches:
+      - main
+        
 jobs:
   job1:
     name: Data
