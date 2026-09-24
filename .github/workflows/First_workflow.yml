@@ -54,7 +54,24 @@ jobs:
             Data/
             !**/Data/System.txt
             !**/Data/*.ppt
-        
-          
+  job3:
+    needs: [job1, job2]
+    name: Download artifacts
+    runs-on: ubuntu-latest
+    steps:
+        - name: upload single artifact
+          uses: actions/download-artifact@v3.1.0
+          with:
+            name: File_1
+        - name: Checking if single file is downloaded 
+          run: ls -al
+
+        - name: uploading multiple files 
+          uses: actions/download-artifact@v3.1.0
+          with:
+            name: Multiple_files
+        - name: Checking if multiple files are downloaded 
+          run: ls -al 
+            
           
   
