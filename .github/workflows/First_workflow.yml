@@ -59,19 +59,25 @@ jobs:
     name: Download artifacts
     runs-on: ubuntu-latest
     steps:
+        - name: Creating Directories
+          run : |
+            mkdir Single_File
+            mkdir Multiple_File
         - name: upload single artifact
           uses: actions/download-artifact@v7.0.0
           with:
             name: File_1
+            path: ./Single_File
         - name: Checking if single file is downloaded 
-          run: ls -al
+          run: ls -al ./Single_File
 
         - name: uploading multiple files 
           uses: actions/download-artifact@v7.0.0
           with:
             name: Multiple_files
+            path: ./Multiple_File
         - name: Checking if multiple files are downloaded 
-          run: ls -al 
+          run: ls -al ./Multiple_File
             
           
   
