@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "THis is the current 1 file" >> ./data1.txt
           mkdir Data
-          "ls - al" > Data/temp.txt
+          ls - al > Data/temp.txt
           hostnamectl > Data/details.txt
           systemctl > Data/System.txt
 
