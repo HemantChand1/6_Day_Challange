@@ -25,3 +25,17 @@ jobs:
         uses: actions/checkout@v2.8.0
       - name: check data again
         run: ls -al
+  job3:
+    name: No dependency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setting up timer
+        run: sleep 15
+  job4:
+    needs: [job1, job2, job3]
+    name: Multiple dependencies 
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is to set 
+        run: sleep 5 sec
+        
