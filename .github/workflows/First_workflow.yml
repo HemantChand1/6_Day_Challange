@@ -37,5 +37,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: This is to set 
-        run: sleep 5 sec
+        run: sleep 5
         
