@@ -25,44 +25,16 @@ jobs:
           name: File_1
           path: ./MY_FILE.txt
 
-  job2:
-    needs: job1
-    name: Uploading Multiple files
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking current files
-        run: |
-          ls -la
-          pwd
-
-      - name: adding files to the location
-        run: |
-          echo "THis is the current 1 file" >> ./data1.txt
-          mkdir ./Data
-          ls -al >> Data/temp.txt
-          hostnamectl >> Data/details.txt
-          systemctl >> Data/System.txt
-          ps -aef >> Data/monitor.ppt
-          free -h >> Data/log.ppt
-
-      - name: artifact
-        uses: actions/upload-artifact@v7.0.1
-        with:
-          name: Multiple_files
-          path: |
-            ./data1.txt
-            Data/
-            !**/Data/System.txt
-            !**/Data/*.ppt
+  
   job3:
-    needs: [job1, job2]
+    needs: job1
     name: Download artifacts
     runs-on: ubuntu-latest
     steps:
         - name: Creating Directories
           run : |
             mkdir Single_File
-            mkdir Multiple_File
+            
         - name: upload single artifact
           uses: actions/download-artifact@v7.0.0
           with:
@@ -71,13 +43,5 @@ jobs:
         - name: Checking if single file is downloaded 
           run: ls -al ./Single_File
 
-        - name: uploading multiple files 
-          uses: actions/download-artifact@v7.0.0
-          with:
-            name: Multiple_files
-            path: ./Multiple_File
-        - name: Checking if multiple files are downloaded 
-          run: ls -al ./Multiple_File
-            
-          
+       
   
