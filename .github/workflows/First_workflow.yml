@@ -1,6 +1,9 @@
 name: First_workflow
 on: 
-  push
+  push:
+    branches:
+      - Dev
+      - 'feature-*' # this is a string any branch that starts with feature- will get triggured by this "
   
   
 jobs:
