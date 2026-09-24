@@ -2,7 +2,9 @@ name: First_workflow
 on: 
   # push
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+  
 jobs:
   job1:
     name: Data
