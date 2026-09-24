@@ -1,6 +1,8 @@
 name: First_workflow
-on: push
-
+on: 
+  # push
+  schedule:
+    - cron: "*/1 * * * *"
 jobs:
   job1:
     name: Data
@@ -30,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setting up timer
-        run: sleep 15
+        run: sleep 5
   job4:
     needs: [job1, job2, job3]
     name: Multiple dependencies 
