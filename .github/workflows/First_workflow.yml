@@ -48,5 +48,6 @@ jobs:
         - name: Checking if single file is downloaded 
           run: ls -al ./Single_File
 
-       
+        - name: testing the failure
+          run: EXIT 1
   
