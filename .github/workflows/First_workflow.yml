@@ -14,32 +14,11 @@ jobs:
         run: |
           pwd
           ls -al
-  job2:
-    needs: job1
-    name: adding additonal data
-    runs-on: ubuntu-latest
-    steps:
-      - name: adding file
-        run: mkdir Test
-      - name: adding data to directory
-        run: | 
-          cd ./Test
-          echo "This is the test file to be tested in the repo" > mono.txt
+          hostnamectl
       - name: checkout
-        uses: actions/checkout@v2.8.0
-      - name: check data again
-        run: ls -al
-  job3:
-    name: No dependency
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setting up timer
-        run: sleep 5
-  job4:
-    needs: [job1, job2, job3]
-    name: Multiple dependencies 
-    runs-on: ubuntu-latest
-    steps:
-      - name: This is to set 
-        run: sleep 5
-        
+        uses: actions/checkout@v5.1.0
+      - name: step-3
+        run: |
+          ls -ltr
+          
+  
