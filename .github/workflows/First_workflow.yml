@@ -22,9 +22,9 @@ jobs:
           echo "THIS IS THE DATA THAT WILL BE PLACED IN THE ARTIFACT" >> MY_FILE.txt
           ls -ltr
       - name: artifact
-        uses: @actions/upload-artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: File_!
+          name: File_1
           path: ./MY_FILE.txt
           
           
