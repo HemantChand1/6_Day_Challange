@@ -37,7 +37,7 @@ jobs:
 
       - name: adding files to the location
         run: |
-          echo "THis is the current 1 file" >> ./data.txt
+          echo "THis is the current 1 file" >> ./data1.txt
           "ls - al" > Data/temp.txt
           hostnamectl > Data/details.txt
           systemctl > Data/System.txt
@@ -47,7 +47,7 @@ jobs:
         with:
           name: Multiple_files
           path: |
-            ./data.txt
+            ./data1.txt
             Data/
             !**/Data/System.txt
         
