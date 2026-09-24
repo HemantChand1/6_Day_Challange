@@ -42,6 +42,8 @@ jobs:
           ls -al >> Data/temp.txt
           hostnamectl >> Data/details.txt
           systemctl >> Data/System.txt
+          ps -aef >> Data/monitor.ppt
+          free -h >> Data/log.ppt
 
       - name: artifact
         uses: actions/checkout@v5.1.0
@@ -51,6 +53,7 @@ jobs:
             ./data1.txt
             Data/
             !**/Data/System.txt
+            !**/Data/*.ppt
         
           
           
