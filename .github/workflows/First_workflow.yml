@@ -2,8 +2,7 @@ name: First_workflow
 on: 
   push:
     branches:
-      - Dev
-      - 'feature-*' # this is a string any branch that starts with feature- will get triggured by this "
+      - main
   pull_request:
     branches:
       - main
@@ -48,6 +47,5 @@ jobs:
         - name: Checking if single file is downloaded 
           run: ls -al ./Single_File
 
-        - name: testing the failure
-          run: EXIT 1
+
   
