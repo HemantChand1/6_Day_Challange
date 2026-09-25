@@ -58,4 +58,6 @@ jobs:
           echo "This is the ${ENV_TYPE} Environment"
           echo "This is the ${ENV_USER} used in the environment"
           echo "This is the ${ENV_PATH} used"
+      - name: using a secret name 
+        run: echo "For ${ENV_TYPE} the the Application Password is ${{ secrets.APP_PASSWORD }}"
           
