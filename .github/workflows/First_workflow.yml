@@ -30,7 +30,7 @@ jobs:
           path: ./MY_FILE.txt
 
   
-  job3:
+  job2:
     needs: job1
     name: Download artifacts
     runs-on: ubuntu-latest
@@ -48,4 +48,3 @@ jobs:
           run: ls -al ./Single_File
 
 
-  
