@@ -5,7 +5,10 @@ on:
       - main
   pull_request:
     branches: [main]
-        
+ENV_TYPE: Development
+ENV_USER: Himanshu Kumar
+ENV_PATH: /Home/data/key
+
 jobs:
   job1:
     name: Data
@@ -47,3 +50,13 @@ jobs:
           run: ls -al ./Single_File
 
 
+  job3:
+    name: Environment variable testing 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Variable testig 
+        run: |
+          echo "This is the ${ENV_TYPE} Environment"
+          echo "This is the ${ENV_USER} used in the environment"
+          echo "This is the ${ENV_PATH} used"
+          
