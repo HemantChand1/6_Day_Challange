@@ -63,6 +63,6 @@ jobs:
       - name: "Let's check the inbuild varibles in git "
         run: |
           echo "The current repo and it's details are in - ${{ github.action_repository }}"
-          echo "What is the job status ${{ job.status }}"
-          echo "The runner name is ${{ runner.name }}"
-          echo "The runner OS is ${{ runner.os }} " 
+          echo "What is the job status - ${{ job.status }}"
+          echo "The runner name is - ${{ runner.name }}"
+          echo "The runner OS is - ${{ runner.os }} " 
