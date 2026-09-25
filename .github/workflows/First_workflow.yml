@@ -8,7 +8,6 @@ on:
       - main
         
 jobs:
-
   job1:
     name: Data
     runs-on: ubuntu-latest
