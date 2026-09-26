@@ -66,3 +66,24 @@ jobs:
           echo "What is the job status - ${{ job.status }}"
           echo "The runner name is - ${{ runner.name }}"
           echo "The runner OS is - ${{ runner.os }} " 
+
+  Staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is to check the values of the environment
+        run: |
+          echo "[INFO] The environment varibale are with host ${{ vars.HOST }} and using password ${{ vars.USER }} "
+          echo "[INFO] The environment varible password is ${{ secrets.PASSWORD }} "
+    environment:
+        name: STAGING
+
+  Production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is to check the values in the production environment
+        run: |
+          echo "[INFO] This is to check the varibale in prod where host is ${{ vars.HOST }} & USER is ${{ vars.USER }}"
+          echo "[INFO] This is to check the value in prod for the password ${{ secrets.PASSWORD }}
+
+    environment:
+      name: PRODUCTION
