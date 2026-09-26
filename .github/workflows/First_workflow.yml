@@ -1,7 +1,7 @@
 name: First_workflow
 on: 
   push:
-    branches:
+    branches: 
       - main
   pull_request:
     branches:
@@ -85,7 +85,9 @@ jobs:
     #if: github.head_ref == 'refs/heads/Dev' # setting condition to run on particular branch based on the condition 
     # the github.ref is an environment varibale and first check what to use based on the environment variable 
     # we can also use github.head_ref --> depending on the situation if we are using this as pull request 
+
     if: github.base_ref == 'Dev' || github.ref == 'refs/heads/Dev'
+
     
   Production:
     runs-on: ubuntu-latest
@@ -93,7 +95,7 @@ jobs:
       - name: This is to check the values in the production environment
         run: |
           echo "[INFO] This is to check the varibale in prod where host is ${{ vars.HOST }} & USER is ${{ vars.USER }}"
-          echo "[INFO] This is to check the value in prod for the password ${{ secrets.PASSWORD }}
+          echo "[INFO] This is to check the value in prod for the password ${{ secrets.PASSWORD }}"
 
     environment:
       name: PRODUCTION
