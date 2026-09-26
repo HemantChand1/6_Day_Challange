@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
- 
+import os 
+
 app = Flask(__name__)
  
 # In-memory storage (for demo)
@@ -31,7 +32,8 @@ def add_task():
     }
     tasks.append(new_task)
     return jsonify(new_task), 201
- 
+
  
 if __name__ == "__main__":
-    app.run(debug=True)
+    debug_mode = os.environ.get("FLASK_DEBUG", "False").lower() == "true"
+    app.run(debug=debug_mode)
