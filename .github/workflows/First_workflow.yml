@@ -45,7 +45,7 @@ jobs:
       contents: read
       security-events: write # request to upload the analysis results
 
-    stratergy:
+    strategy:
 
       matrix:
         language: [ 'python']
