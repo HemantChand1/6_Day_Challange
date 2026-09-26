@@ -86,8 +86,8 @@ jobs:
     # the github.ref is an environment varibale and first check what to use based on the environment variable 
     # we can also use github.head_ref --> depending on the situation if we are using this as pull request 
     if: | #setting multiple contains
-      (github.event_name == 'pull_request' && github.base_ref == 'main') ||
-      (github.event_name == 'push' && github.head_ref == 'Dev')
+      (github.event_name == 'pull_request' && github.base_ref == 'Dev') ||
+      (github.event_name == 'push' && github.head_ref == 'refs/heads/Dev')
     
   Production:
     runs-on: ubuntu-latest
