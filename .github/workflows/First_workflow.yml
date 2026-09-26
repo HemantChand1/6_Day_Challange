@@ -1,6 +1,8 @@
 name: First_workflow
 on: 
-
+  push:
+    branches:
+      - main
     
   pull_request:
     branches:
@@ -84,7 +86,9 @@ jobs:
     #if: github.head_ref == 'refs/heads/Dev' # setting condition to run on particular branch based on the condition 
     # the github.ref is an environment varibale and first check what to use based on the environment variable 
     # we can also use github.head_ref --> depending on the situation if we are using this as pull request 
-    if: github.event_name == 'pull_request' && github.head_ref == 'Dev'
+    if: |
+      (github.event_name == 'pull_request' && github.base_ref == 'main') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main')
     
   Production:
     runs-on: ubuntu-latest
