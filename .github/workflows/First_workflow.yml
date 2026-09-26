@@ -1,11 +1,19 @@
 name: First_workflow
 on: 
   push:
-    branches: 
+    branches:
       - main
+    
   pull_request:
-    branches: [main]
-        
+    branches:
+      - main
+
+
+env:
+  ENV_TYPE: Development  # setting up the environment variables 
+  ENV_USER: Himanshu Kumar # setting up the environment variables
+  ENV_PATH: /Home/data/key # setting up the environment variables
+
 jobs:
   job1:
     name: Data
@@ -47,3 +55,50 @@ jobs:
           run: ls -al ./Single_File
 
 
+  job3:
+    name: Environment variable testing 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Variable testig 
+        run: |
+          echo "This is the ${ENV_TYPE} Environment"
+          echo "This is the ${ENV_USER} used in the environment"
+          echo "This is the ${ENV_PATH} used"
+      - name: using a secret name 
+        run: echo "For ${ENV_TYPE} the the Application Password is ${{ secrets.APP_PASSWORD }}"
+      - name: "Let's check the inbuild varibles in git "
+        run: |
+          echo "The current repo and it's details are in - ${{ github.action_repository }}"
+          echo "What is the job status - ${{ job.status }}"
+          echo "The runner name is - ${{ runner.name }}"
+          echo "The runner OS is - ${{ runner.os }} " 
+          echo " this is the environment with - ${{ github.head_ref }}"
+
+  Staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is to check the values of the environment
+        run: |
+          echo "[INFO] The environment varibale are with host ${{ vars.HOST }} and using password ${{ vars.USER }} "
+          echo "[INFO] The environment varible password is ${{ secrets.PASSWORD }} "
+    environment:
+        name: STAGING
+    #if: github.head_ref == 'refs/heads/Dev' # setting condition to run on particular branch based on the condition 
+    # the github.ref is an environment varibale and first check what to use based on the environment variable 
+    # we can also use github.head_ref --> depending on the situation if we are using this as pull request 
+    if: | #setting multiple contains
+      (github.event_name == 'pull_request' && github.base_ref == 'main') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    
+  Production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is to check the values in the production environment
+        run: |
+          echo "[INFO] This is to check the varibale in prod where host is ${{ vars.HOST }} & USER is ${{ vars.USER }}"
+          echo "[INFO] This is to check the value in prod for the password ${{ secrets.PASSWORD }}
+
+    environment:
+      name: PRODUCTION
+
+    if: github.ref == 'refs/heads/main'
