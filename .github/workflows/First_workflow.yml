@@ -1,6 +1,11 @@
 name: First_workflow
 on: 
   push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 
 env:
@@ -76,8 +81,11 @@ jobs:
           echo "[INFO] The environment varible password is ${{ secrets.PASSWORD }} "
     environment:
         name: STAGING
-    if: github.ref == 'refs/heads/Dev' # setting condition to run on particular branch based on the condition 
-
+    #if: github.head_ref == 'refs/heads/Dev' # setting condition to run on particular branch based on the condition 
+    # the github.ref is an environment varibale and first check what to use based on the environment variable 
+    # we can also use github.head_ref --> depending on the situation if we are using this as pull request 
+    if: github.head_ref == 'Dev'
+    
   Production:
     runs-on: ubuntu-latest
     steps:
