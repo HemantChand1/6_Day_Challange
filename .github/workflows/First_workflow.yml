@@ -4,9 +4,9 @@ on:
 
 
 env:
-  ENV_TYPE: Development
-  ENV_USER: Himanshu Kumar
-  ENV_PATH: /Home/data/key
+  ENV_TYPE: Development  # setting up the environment variables 
+  ENV_USER: Himanshu Kumar # setting up the environment variables
+  ENV_PATH: /Home/data/key # setting up the environment variables
 
 jobs:
   job1:
@@ -76,7 +76,7 @@ jobs:
           echo "[INFO] The environment varible password is ${{ secrets.PASSWORD }} "
     environment:
         name: STAGING
-    if: github.ref == 'refs/heads/Dev'
+    if: github.ref == 'refs/heads/Dev' # setting condition to run on particular branch based on the condition 
 
   Production:
     runs-on: ubuntu-latest
