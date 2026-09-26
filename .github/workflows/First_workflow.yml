@@ -1,7 +1,6 @@
 name: First_workflow
 on: 
-  push:
-    branches: [Dev, main]
+
     
   pull_request:
     branches:
