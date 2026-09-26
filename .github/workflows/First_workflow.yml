@@ -1,8 +1,7 @@
 name: First_workflow
 on: 
   push:
-    branches:
-      - main
+    branches: [Dev, main]
     
   pull_request:
     branches:
@@ -88,7 +87,7 @@ jobs:
     # we can also use github.head_ref --> depending on the situation if we are using this as pull request 
     if: | #setting multiple contains
       (github.event_name == 'pull_request' && github.base_ref == 'main') ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/main')
+      (github.event_name == 'push' && github.head_ref == 'Dev')
     
   Production:
     runs-on: ubuntu-latest
@@ -96,7 +95,7 @@ jobs:
       - name: This is to check the values in the production environment
         run: |
           echo "[INFO] This is to check the varibale in prod where host is ${{ vars.HOST }} & USER is ${{ vars.USER }}"
-          echo "[INFO] This is to check the value in prod for the password ${{ secrets.PASSWORD }}
+          echo "[INFO] This is to check the value in prod for the password ${{ secrets.PASSWORD }}"
 
     environment:
       name: PRODUCTION
