@@ -71,6 +71,7 @@ jobs:
           echo "What is the job status - ${{ job.status }}"
           echo "The runner name is - ${{ runner.name }}"
           echo "The runner OS is - ${{ runner.os }} " 
+          echo " this is the environment with - ${{ github.head_ref }}"
 
   Staging:
     runs-on: ubuntu-latest
